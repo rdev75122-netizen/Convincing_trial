@@ -1,0 +1,386 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.black-bg {
+    background-color: #000;
+    color: #fff;
+}
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    animation: pageEnter 0.8s ease-in-out forwards;
+}
+
+.fade-in-out {
+    animation: fadeInOut 10s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FFB6C1;
+    /* Light Pink */
+}
+
+.messages {
+    margin-bottom: 40px;
+    animation: slideInFromTop 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+}
+
+.card-scene {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    color: white;
+}
+
+.card-front {
+    background-color: #2c2c2c;
+    border: 5px solid #ff69b4;
+}
+
+.card-back {
+    background-color: #000;
+    transform: rotateY(180deg);
+}
+
+.card.disabled .card-front {
+    background-color: #1a1a1a;
+    color: #555;
+    border-color: #444;
+    cursor: not-allowed;
+}
+
+.card:hover .card-front {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card.disabled {
+    cursor: not-allowed;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fullscreen-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    animation: pageEnter 0.8s ease-in-out forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.page-exit {
+    animation: pageExit 0.6s ease-in-out forwards;
+}
+
+@keyframes pageExit {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fullscreen-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 2s ease-in-out;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.image-text {
+    font-size: 2.5em;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out 1s;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.next-button {
+    position: absolute;
+    bottom: 50px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+.next-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.pre-image-message-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    z-index: 10;
+}
+
+.end-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pageEnter 0.8s ease-in-out forwards;
+}
+
+.end-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomIn 15s ease-out forwards;
+}
+
+.end-message-container {
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 1s forwards;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cards-container {
+        justify-content: flex-start;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .messages {
+        margin-bottom: 30px;
+    }
+
+    .messages h2 {
+        font-size: 1.2em;
+    }
+
+    .messages p {
+        font-size: 0.9em;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .card-scene {
+        width: 200px;
+        height: 280px;
+    }
+
+    .card-face {
+        font-size: 4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        padding: 15px;
+    }
+
+    .messages {
+        margin-bottom: 25px;
+    }
+
+    .messages h2 {
+        font-size: 1em;
+    }
+
+    .messages p {
+        font-size: 0.8em;
+    }
+
+    .cards {
+        gap: 30px;
+    }
+
+    .card-scene {
+        width: 160px;
+        height: 230px;
+    }
+
+    .card-face {
+        font-size: 3em;
+    }
+
+    .image-text {
+        font-size: 1.5em;
+    }
+
+    .next-button {
+        bottom: 20px;
+        padding: 10px 20px;
+    }
+
+    .end-message-container h1 {
+        font-size: 1.5em;
+    }
+}
