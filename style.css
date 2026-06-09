@@ -135,6 +135,7 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    overflow-y: auto;
     align-items: center;
     background-color: #000;
     animation: pageEnter 0.8s ease-in-out forwards;
@@ -233,6 +234,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: pageEnter 0.8s ease-in-out forwards;
+    overflow-y: auto;
 }
 
 .end-background-image {
